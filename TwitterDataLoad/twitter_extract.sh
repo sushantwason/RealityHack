@@ -1,10 +1,10 @@
 #trend_py=$1
 #search_py=$2
 
-output=`python /Users/ranand/RealityHack/python-twitter-examples/twitter-trends.py | cut -f1 -d','`
-echo $output
+python /Users/ranand/RealityHack/TwitterDataLoad/twitter-trends.py | cut -f1 -d',' > abc
 
-for tweet in $output:
+while read tweet
 do
-	py
-
+	echo $tweet
+	python /Users/ranand/RealityHack/TwitterDataLoad/twitter-search.py $tweet 2
+done < abc
