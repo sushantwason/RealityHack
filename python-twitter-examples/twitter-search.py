@@ -42,4 +42,5 @@ for result in query["statuses"]:
 	for url in urls:
 		text = text.replace(url,'')
 	text= text.replace('\n','')
+	text = text.replace('https:/','')
 	print "(%s) %s" % (result["created_at"], text)
