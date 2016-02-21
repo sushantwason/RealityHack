@@ -26,10 +26,10 @@ twitter = Twitter(auth = OAuth(config["access_key"], config["access_secret"], co
 # twitter API docs: https://dev.twitter.com/docs/api/1/get/trends/%3Awoeid
 # 2347563 - SFO
 #-----------------------------------------------------------------------
-results = twitter.trends.place(_id = 2347563)
+results = twitter.trends.place(_id = 23424977)
 
-print "SFO TRENDS"
+print "USA TRENDS"
 
 for location in results:
 	for trend in location["trends"]:
-		print " - %s" % trend["name"]
+		print " - %s" % trend["name"].strip()
