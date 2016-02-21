@@ -32,4 +32,4 @@ print "USA TRENDS"
 
 for location in results:
 	for trend in location["trends"]:
-		print " - %s" % trend["name"].strip()
+		print " - %s" % trend["name"]
