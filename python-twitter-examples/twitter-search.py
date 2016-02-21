@@ -6,6 +6,7 @@
 #    "lazy" and "dog"
 #-----------------------------------------------------------------------
 
+import sys
 from twitter import *
 
 #-----------------------------------------------------------------------
@@ -26,7 +27,7 @@ twitter = Twitter(
 # Twitter API docs:
 # https://dev.twitter.com/docs/api/1/get/search
 #-----------------------------------------------------------------------
-query = twitter.search.tweets(q = "lazy dog")
+query = twitter.search.tweets(q = sys.argv[1])
 
 #-----------------------------------------------------------------------
 # How long did this query take?
