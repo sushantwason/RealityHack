@@ -6,7 +6,7 @@
 #-----------------------------------------------------------------------
 
 from twitter import *
-
+import re
 #-----------------------------------------------------------------------
 # load our API credentials 
 #-----------------------------------------------------------------------
@@ -28,8 +28,21 @@ twitter = Twitter(auth = OAuth(config["access_key"], config["access_secret"], co
 #-----------------------------------------------------------------------
 results = twitter.trends.place(_id = 23424977)
 
-print "USA TRENDS"
+def camel_case_split(identifier):
+    matches = re.finditer('.+?(?:(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])|$)', identifier)
+    return [m.group(0) for m in matches]
 
+def nytimesFormat (trend):
+	formattedTrend=trend
+	if trend.strip()[0]=='#':
+		formattedTrend= formattedTrend.lstrip('#')
+		formattedTrend = camel_case_split(formattedTrend)
+		formattedTrend= ' '.join(formattedTrend)
+	return formattedTrend
+	
+		
+print "USA TRENDS"
 for location in results:
 	for trend in location["trends"]:
-		print " - %s" % trend["name"]
+		new_trend = nytimesFormat(trend["name"])
+		print new_trend+','+str(trend["tweet_volume"])+','+location['locations'][0]['name']
