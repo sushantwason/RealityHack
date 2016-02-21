@@ -26,12 +26,12 @@ twitter = Twitter(auth = OAuth(config["access_key"], config["access_secret"], co
 # Twitter API docs:
 # https://dev.twitter.com/docs/api/1/get/search
 #-----------------------------------------------------------------------
-query = twitter.search.tweets(q = sys.argv[1], count=100)
+query = twitter.search.tweets(q = sys.argv[1], count=sys.argv[2])
 
 #-----------------------------------------------------------------------
 # How long did this query take?
 #-----------------------------------------------------------------------
-print "Search complete (%.3f seconds)" % (query["search_metadata"]["completed_in"])
+#print "Search complete (%.3f seconds)" % (query["search_metadata"]["completed_in"])
 
 #-----------------------------------------------------------------------
 # Loop through each of the results, and print its content.
@@ -43,4 +43,4 @@ for result in query["statuses"]:
 		text = text.replace(url,'')
 	text= text.replace('\n','')
 	text = text.replace('https:/','')
-	print "(%s) %s" % (result["created_at"], text)
+	print "(%s) (%s) (%s)" % (result["created_at"], text, sys.argv[1])

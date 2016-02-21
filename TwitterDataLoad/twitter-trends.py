@@ -41,7 +41,6 @@ def nytimesFormat (trend):
 	return formattedTrend
 	
 		
-print "USA TRENDS"
 for location in results:
 	for trend in location["trends"]:
 		new_trend = nytimesFormat(trend["name"])
