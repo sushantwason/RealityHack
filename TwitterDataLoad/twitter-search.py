@@ -26,7 +26,7 @@ twitter = Twitter(auth = OAuth(config["access_key"], config["access_secret"], co
 # Twitter API docs:
 # https://dev.twitter.com/docs/api/1/get/search
 #-----------------------------------------------------------------------
-query = twitter.search.tweets(q = sys.argv[1], count=100)
+query = twitter.search.tweets(q = sys.argv[1], count=sys.argv[2])
 
 #-----------------------------------------------------------------------
 # How long did this query take?
